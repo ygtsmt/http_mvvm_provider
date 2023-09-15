@@ -6,13 +6,9 @@ import 'package:http_mvvm_provider/users_list/repo/user_services.dart';
 class UsersViewModel extends ChangeNotifier {
   bool _loading = false;
   List<UserModel> _userListModel = [];
-
   bool get loading => _loading;
   List<UserModel> get userListModel => _userListModel;
 
-  UsersViewModel() {
-    getUsers();
-  }
 
   setLoading(bool loading) async {
     _loading = loading;
@@ -31,5 +27,9 @@ class UsersViewModel extends ChangeNotifier {
     }
 
     setLoading(false);
+  }
+
+  UsersViewModel() {
+    getUsers();
   }
 }
