@@ -5,7 +5,7 @@ import 'app_title.dart';
 
 class UserListRow extends StatelessWidget {
   final UserModel userModel;
-  final Function onTap;
+  final VoidCallback onTap;
   UserListRow({required this.userModel, required this.onTap});
 
   @override
@@ -17,9 +17,9 @@ class UserListRow extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            AppTitle(text: userModel.name),
+            AppTitle(text: userModel.name ?? "null"),
             Text(
-              userModel.email,
+              userModel.email ?? "null",
               style: TextStyle(color: Colors.black),
             ),
           ],

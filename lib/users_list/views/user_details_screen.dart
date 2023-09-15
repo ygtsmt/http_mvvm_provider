@@ -11,7 +11,7 @@ class UserDetailsScreen extends StatelessWidget {
     UsersViewModel usersViewModel = context.watch<UsersViewModel>();
     return Scaffold(
       appBar: AppBar(
-        title: Text(usersViewModel.selectedUser.name),
+        title: Text(usersViewModel.selectedUser.name ?? "null"),
       ),
       body: Container(
         padding: const EdgeInsets.all(20.0),
@@ -19,31 +19,31 @@ class UserDetailsScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            AppTitle(text: usersViewModel.selectedUser.name),
+            AppTitle(text: usersViewModel.selectedUser.name ?? "null"),
             const SizedBox(height: 5.0),
             Text(
-              usersViewModel.selectedUser.email,
-              style: const TextStyle(color: Colors.black),
-            ),
-            const SizedBox(height: 5.0),
-            Text(
-              usersViewModel.selectedUser.phone,
+              usersViewModel.selectedUser.email ?? "null",
               style: const TextStyle(color: Colors.black),
             ),
             const SizedBox(height: 5.0),
             Text(
-              usersViewModel.selectedUser.website,
+              usersViewModel.selectedUser.phone ?? "null",
               style: const TextStyle(color: Colors.black),
             ),
             const SizedBox(height: 5.0),
             Text(
-              usersViewModel.selectedUser.address.street,
+              usersViewModel.selectedUser.website ?? "null",
+              style: const TextStyle(color: Colors.black),
+            ),
+            const SizedBox(height: 5.0),
+          /*   Text(
+              usersViewModel.selectedUser.address.street ?? "null",
               style: const TextStyle(color: Colors.black),
             ),
             Text(
-              usersViewModel.selectedUser.address.city,
+              usersViewModel.selectedUser.address.city ?? "null",
               style: const TextStyle(color: Colors.black),
-            ),
+            ), */
           ],
         ),
       ),

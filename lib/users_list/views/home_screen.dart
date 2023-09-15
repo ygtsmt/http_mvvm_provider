@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:http_mvvm_provider/components/app_error.dart';
 import 'package:http_mvvm_provider/components/app_loading.dart';
 import 'package:http_mvvm_provider/components/user_list_row.dart';
 import 'package:http_mvvm_provider/users_list/models/users_list_model.dart';
 import 'package:http_mvvm_provider/users_list/view_models/users_view_model.dart';
-import 'package:http_mvvm_provider/utils/navigation_utils.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -17,20 +15,7 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('Users'),
-        actions: [
-          IconButton(
-            onPressed: () async {
-              openAddUser(context);
-            },
-            icon: const Icon(Icons.add),
-          ),
-          IconButton(
-            onPressed: () async {
-              usersViewModel.getUsers();
-            },
-            icon: const Icon(Icons.refresh),
-          )
-        ],
+       
       ),
       body: Container(
         padding: const EdgeInsets.all(20.0),
@@ -47,9 +32,9 @@ class HomeScreen extends StatelessWidget {
     if (usersViewModel.loading) {
       return AppLoading();
     }
-    return AppError(
-      errortxt: usersViewModel.userError.message,
-    );
+    /* return AppError(
+      errortxt: usersViewModel.userError.message ?? "null",
+    ); */
     return Expanded(
       child: ListView.separated(
         itemBuilder: (context, index) {
@@ -57,8 +42,7 @@ class HomeScreen extends StatelessWidget {
           return UserListRow(
             userModel: userModel,
             onTap: () async {
-              usersViewModel.setSelectedUser(userModel);
-              openUserDetails(context);
+          //    usersViewModel.setSelectedUser(userModel);
             },
           );
         },
