@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:http_mvvm_provider/users_list/view_models/users_view_model.dart';
 import 'package:provider/provider.dart';
+
 import 'users_list/views/home_screen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.light,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: HomeScreen(),
+        home: const HomeScreen(),
       ),
     );
   }
